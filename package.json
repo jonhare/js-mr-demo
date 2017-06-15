@@ -9,6 +9,7 @@
   "author": "Jonathon Hare (jsh2@ecs.soton.ac.uk)",
   "license": "Apache-2.0",
   "dependencies": {
+    "cors": "^2.8.3",
     "express": "^4.15.3",
     "vm2": "^3.4.6"
   },

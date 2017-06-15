@@ -1,7 +1,10 @@
+const cors = require('cors'); 
 const fs = require('fs');
 const express = require('express');
-const app = express();
 const {VM} = require('vm2');
+
+const app = express();
+app.use(cors());
 
 //configure ports, automatically choosing between the Heroku port and development port
 var httpPort = Number(process.env.PORT || 3000);
