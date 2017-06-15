@@ -1,0 +1,18 @@
+{
+  "name": "js-mr-demo",
+  "version": "1.0.0",
+  "description": "A simple node.js server to serve sample texts and allow arbitrary map functions to be applied to them.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jonathon Hare (jsh2@ecs.soton.ac.uk)",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "express": "^4.15.3",
+    "vm2": "^3.4.6"
+  },
+  "engines": {
+    "node": ">=8.x"
+  }
+}
