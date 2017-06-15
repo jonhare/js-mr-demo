@@ -5,8 +5,9 @@ const {VM} = require('vm2');
 
 //configure ports, automatically choosing between the Heroku port and development port
 var httpPort = Number(process.env.PORT || 3000);
+var bookDir = process.env.BOOKDIR || '1';
 
-var dir = "public/1/";
+var dir = "public/" + bookDir + "/";
 var files = fs.readdirSync(dir);
 
 var data = []
