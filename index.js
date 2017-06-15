@@ -28,14 +28,15 @@ app.get('/', function (req, res) {
 
 app.get('/map', function (req, res) {
 	var vm = new VM({
-    	timeout: 1000,
+    	timeout: 30000,
     	sandbox: {
     		map: function(input) { return input; },
-    		data: data
+    		data: data,
+    		cmRunStepCount: 0
     	}
 	});
 	if (!req.query.fcn) req.query.fcn = '';
-
+	
 	try {
 		var rawresponse = vm.run(req.query.fcn + 'data.map(map);');
 		res.send(JSON.stringify(rawresponse));
