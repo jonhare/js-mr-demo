@@ -35,10 +35,32 @@ app.get('/map', function (req, res) {
     		cmRunStepCount: 0
     	}
 	});
-	if (!req.query.fcn) req.query.fcn = '';
+	if (!req.query.mapfcn) req.query.mapfcn = '';
 	
 	try {
-		var rawresponse = vm.run(req.query.fcn + 'data.map(map);');
+		var rawresponse = vm.run(req.query.mapfcn + 'data.map(map);');
+		res.send(JSON.stringify(rawresponse));
+	} catch (e) {
+		res.send(e.name);
+	}
+})
+
+app.get('/map_combine', function (req, res) {
+	var vm = new VM({
+    	timeout: 30000,
+    	sandbox: {
+    		map: function(input) { return input; },
+    		combine: function(input) {return input},
+    		data: data,
+    		cmRunStepCount: 0
+    	}
+	});
+	
+	if (!req.query.mapfcn) req.query.mapfcn = '';
+	if (!req.query.combinefcn) req.query.combinefcn = '';
+
+	try {
+		var rawresponse = vm.run(req.query.mapfcn + " " + req.query.combinefcn + 'var result = data.map(map); combine(result);');
 		res.send(JSON.stringify(rawresponse));
 	} catch (e) {
 		res.send(e.name);
