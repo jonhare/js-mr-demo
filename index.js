@@ -32,7 +32,7 @@ app.get('/map', function (req, res) {
     	sandbox: {
     		map: function(input) { return input; },
     		data: data,
-    		cmRunStepCount: 0
+    		__codeBlockCounter__: 0
     	}
 	});
 	if (!req.query.mapfcn) req.query.mapfcn = '';
