@@ -52,7 +52,7 @@ app.get('/map_combine', function (req, res) {
     		map: function(input) { return input; },
     		combine: function(input) {return input},
     		data: data,
-    		cmRunStepCount: 0
+    		__codeBlockCounter__: 0
     	}
 	});
 	
