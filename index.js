@@ -38,9 +38,11 @@ app.get('/map', function (req, res) {
 	if (!req.query.mapfcn) req.query.mapfcn = '';
 	
 	try {
+		console.log(req.query);
 		var rawresponse = vm.run(req.query.mapfcn + 'data.map(map);');
 		res.send(JSON.stringify(rawresponse));
 	} catch (e) {
+		console.log(e);
 		res.send(e.name);
 	}
 })
@@ -50,7 +52,7 @@ app.get('/map_combine', function (req, res) {
     	timeout: 30000,
     	sandbox: {
     		map: function(input) { return input; },
-    		combine: function(input) {return input},
+    		combine: function(acc, input) {return acc},
     		data: data,
     		__codeBlockCounter__: 0
     	}
@@ -60,9 +62,11 @@ app.get('/map_combine', function (req, res) {
 	if (!req.query.combinefcn) req.query.combinefcn = '';
 
 	try {
-		var rawresponse = vm.run(req.query.mapfcn + " " + req.query.combinefcn + 'var result = data.map(map); combine(result);');
+		console.log(req.query);
+		var rawresponse = vm.run(req.query.mapfcn + " " + req.query.combinefcn + 'data.map(map).reduce(combine, {});');
 		res.send(JSON.stringify(rawresponse));
 	} catch (e) {
+		console.log(e);
 		res.send(e.name);
 	}
 })
